@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <title>Ruben's Blog</title>
     <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/modules.css">
   </head>
   <body>
     <main>
-        <header>
+        <header class="site-header">
           <h1>
             Welcome to my Blog!
           </h1>
           <p>The Power of Sports Blogs!</p>
         </header>
-        <nav>
+        <nav class="main-nav">
           <ul>
-            <li><a href>Home</a></li>
-            <li><a href>Articles</a></li>
-            <li><a href>Contact</a></li>
-            <li><a href>About Me</a></li>
+            <li class="tab" data-content="home"><a href="#"> Home</a></li>
+            <li class="tab" data-content="articles"><a href="#"> Articles</a></li>
+            <li class="tab" data-content="contact"><a href> Contact</a></li>
+            <li class="tab" data-content="about me"><a href> About Me</a></li>
             <li><a href="https://github.com/rubens23" target="_blank">Github</a></li>
           </ul>
         </nav>
-        <section id="articles">
-          <article class="template" data-category="cat">
+        <section id="articles" class="tab-content">
+          <div>
+            <ul id="filters">
+            <li>
+              <select id="author-filter">
+                <option value"">-- Filter by Authors --</option>
+              </select>
+            </li>
+              <select id="category-filter">
+                <option value="">-- Filter by Categories --</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+          <article class="template template" data-category="cat">
             <header>
               <h1>Title</h1>
               <div class="byline">

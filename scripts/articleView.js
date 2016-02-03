@@ -21,34 +21,32 @@ articleView.handleAuthorFilter = function() {
   $('#author-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
-
-      $('article[data-author = "' + $(this).val() + '"]').fadeIn();
-
+      $('article[data-author="' + $(this).val() + '"]').fadeIn();
     } else {
-      $('article').show();
-
+      $('article').fadeIn();
+      $('article.template').hide();
     }
     $('#category-filter').val('');
-  });$('#category-filter').on('change', function () {
+  });
+};
+
+articleView.handleCategoryFilter = function() {
+  $('#category-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
-      $('article[data-category = "'+ $(this).val() + '"]').fadeIn();
+      $('article[data-category="' + $(this).val() + '"]').fadeIn();
     } else {
-      $('article').show();
+      $('article').fadeIn();
+      $('article.template').hide();
     }
     $('#author-filter').val('');
   });
 };
 
-articleView.handleCategoryFilter = function() {
-
-};
-
 articleView.handleMainNav = function() {
-  
-  $('.main-nav').on('click', '.tab', function () {
+  $('.main-nav').on('click', '.tab', function(e) {
     $('.tab-content').hide();
-    $('#' + $(this).attr('data-content')).fadeIn();
+    $('#' + $(this).data('content')).fadeIn();
   });
 
   $('.main-nav .tab:first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
@@ -57,19 +55,17 @@ articleView.handleMainNav = function() {
 articleView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any artcile body.
 
-  $('articles').on('click', 'a.read-on', function(e) {
+  $('#articles').on('click', 'a.read-on', function(e) {
     e.preventDefault();
     $(this).parent().find('*').fadeIn();
     $(this).hide();
-  })
-
+  });
 };
 
-// TODO: Call all of the above functions, once we are sure the DOM is ready.
-$(document).ready(function () {
+$(document).ready(function() {
   articleView.populateFilters();
-  articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
+  articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-});
+})

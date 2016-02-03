@@ -5,12 +5,27 @@
     <title>Ruben's Blog</title>
     <meta charset="UTF-8">
     <title>Ruben's Blog</title>
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+
+    <script id="articleHB" type="text/x-handlebars-template">
+    <article class='clearfix' data-author= '{{author}}'
+      data-category='{{category}}'>
+        <header>
+          <h1>{{title}}</h1>
+            <div class="byline">
+              By <address><a href='{{authorUrl}}'>{{author}}</a></address>
+            </div>
+        </header>
+    <section class="article-body">{{{body}}}</section>
+      <a href="#" class="read-on">Read on &rarr;</a>
+    </article>
+  </script>
+
   </head>
   <body>
     <header class="site-header clearfix">
@@ -18,7 +33,7 @@
         <h1>
           Welcome to my Blog!
         </h1>
-        <h2>The shocking power of sports blogs</h2>
+        <h2>The shocking power of sports blogs!</h2>
       </section>
       <nav class="main-nav">
         <div class="icon-menu"></div>
@@ -46,18 +61,6 @@
                 </li>
               </ul>
             </div>
-            <article class="template template" data-category="Sports">
-              <header>
-                <h1>Title</h1>
-                <div class="byline">
-                  By <address><a href="">Author Name</a></address>
-                  published <time pubdate datetime="2000-01-01">Publish Time</time>
-                </div>
-              </header>
-              <section class="article-body"></section>
-              <a href="#" class="read-on">Read on &rarr;</a>
-            </article>
-          </section>
         </main>
         <footer text-align="center">
           <div id="footer-line">
@@ -66,6 +69,7 @@
         </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
         <script src="scripts/blogArticles.js"></script>
         <script src="scripts/articles.js"></script>
         <script src="scripts/articleView.js"></script>
